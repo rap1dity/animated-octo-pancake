@@ -26,3 +26,6 @@ npm run start
 |   |   +-- entities
 |   +-- common
 ```
+## Database structure
+Source link - https://dbdiagram.io/d/Trello-66bdde248b4bb5230e32eea6
+![database.png](database.png)
