@@ -1,11 +1,14 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UsePipes } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UseGuards, UsePipes } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { CommentsService } from "./comments.service";
 import { CreateCommentDto } from "./dto/create-comment.dto";
 import { ValidationPipe } from "../pipes/validation.pipe";
 import { Comment } from "./entities/comment.entity";
+import { JwtAuthGuard } from "../guards/jwt-auth.guard";
+import { AccessGuard } from "../guards/access.guard";
 
 @ApiTags('Comments')
+@UseGuards(JwtAuthGuard, AccessGuard)
 @Controller('users/:userId/columns/:columnId/tasks/:taskId/comments')
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
